@@ -1,0 +1,41 @@
+# 应用基础配置 支持使用环境变量覆盖 示例 export VVVSTORE_APP_MODE=release
+[app]
+  # 项目名称
+  name = "vvvstore移动商城系统"
+  # 项目简介
+  description = "基于go+uniapp开发的商城系统"
+  # 默认语言
+  locale = "zh"
+  # 应用运行模式 debug 调试模式 release 生产模式
+  mode = "debug"
+  # 应用host
+  host = ""
+  # 运行端口
+  port = 9595
+  # 当前应用版本号
+  version = "1.0.0"
+  # 是否开启跨域访问
+  cors = false
+  # 用户授权token密匙
+  jwtSecret = "vvvstore"
+  # 默认分页数量
+  pageSize = 20
+
+# MySQL数据库配置
+[database]
+  name = "vvvstore"
+  host = "127.0.0.1"
+  port = 3306
+  user = "root"
+  password = ""
+  charset = "utf8mb4"
+  prefix = "vs_"
+  maxIdleConns = 30
+  maxOpenConns = 30
+
+# Redis配置
+[redis]
+  host = "127.0.0.1"
+  port = 6379
+  password = ""
+  db = 0

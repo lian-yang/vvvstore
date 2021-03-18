@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  api:
+    build: . # Dockerfile 的目录，用于构建镜像
+    container_name: "vvvstore-server" # 容器名称
+    ports: # 暴露的端口
+      - "9595:9595" #将本机的 9595 端口映射到容器的9595端口
+    environment:
+      - VVVSTORE_APP_MODE=debug
+    restart: always # 自动重启
+    depends_on: # 需要提前启动的依赖
+      - mysql
+      - redis
+    networks:
+      - overlay
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql8
+    ports:
+      - "3306:33066"
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_DATABASE=vvvstore
+      - MYSQL_ROOT_PASSWORD
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
+    volumes:
+      - mysql_data:/data/mysql
+    networks:
+      - overlay
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    # command: redis-server --requirepass "password" # set redis password 设置 Redis 密码
+    # volumes:
+    #   - "/data:/data"  # make data persistent 持久化
+    ports:
+      - "6379:6379"
+    networks:
+      - overlay
+
+volumes:
+  mysql_data:
+
+networks:
+  overlay:

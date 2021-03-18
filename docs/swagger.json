@@ -1,0 +1,47 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "基于golang + uniapp 实现的跨端商城系统、支持H5 Android IOS 微信小程序等",
+        "title": "vvvstore商城系统",
+        "contact": {
+            "name": "yanglian",
+            "url": "https://github.com/lian-yang",
+            "email": "395486566@qq.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/ping": {
+            "get": {
+                "description": "用于确认接口状态是否正常",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "系统相关接口"
+                ],
+                "summary": "实现Ping接口",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.IndexController"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "controller.IndexController": {
+            "type": "object"
+        }
+    }
+}

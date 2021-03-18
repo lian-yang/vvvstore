@@ -1,0 +1,31 @@
+definitions:
+  controller.IndexController:
+    type: object
+info:
+  contact:
+    email: 395486566@qq.com
+    name: yanglian
+    url: https://github.com/lian-yang
+  description: 基于golang + uniapp 实现的跨端商城系统、支持H5 Android IOS 微信小程序等
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: vvvstore商城系统
+  version: 1.0.0
+paths:
+  /api/ping:
+    get:
+      consumes:
+      - application/json
+      description: 用于确认接口状态是否正常
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controller.IndexController'
+      summary: 实现Ping接口
+      tags:
+      - 系统相关接口
+swagger: "2.0"
